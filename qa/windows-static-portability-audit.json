@@ -60,5 +60,18 @@
     "operation_id_to_sdk_impact": "PASS",
     "business_reports_to_release_advisory": "PASS"
   },
-  "limitations": "本审计不执行任务业务入口，结论来自源码、依赖、路径、编码、附件成员及交付闭合的逐项审阅。"
+  "limitations": "本审计不执行任务业务入口，结论来自源码、依赖、路径、编码、附件成员及交付闭合的逐项审阅。",
+  "attachments_sha256": {
+    "输入数据包.zip": "1ddd4639e445921daca87ca317845d03f2acdd1c4ff5bd71618a0470fb7b629d",
+    "reference.zip": "dc50f11c3fe9518816ca591b5f93cdee37fb72a8818888eebe566e1c882bcc3f",
+    "关键标准答案.xlsx": "0d55794c7032850822118c128b6eed35b07beccbaf12d3a6e8dcf6ea3d14c3da",
+    "任务规格转化.xlsx": "141d1d6793b1e280e63cb2993596619d6768552b3b046e9ac5e278e4077fee4b"
+  },
+  "repo_commit": "67b271a56451cc77dc01ada5a81852dbc64c4237",
+  "existing_windows_run": {
+    "run_id": "31655593243",
+    "status": "PASS",
+    "head_sha": "fd049314b74767dc71146a17d2ad118ad99dab27",
+    "superseded_for_current_attachments": true
+  }
 }
