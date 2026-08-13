@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "scanned_sources": 212,
+  "violations": [],
+  "candidate_score_answer_leakage": [],
+  "rubric_contract": {
+    "total_score": 100,
+    "item_score_sum": 100,
+    "item_count": 7,
+    "required_labels": [
+      "分值：",
+      "标准答案或判定规则：",
+      "关键字段或路径：",
+      "容差及来源：",
+      "未满足时：",
+      "可观察证据及定位方式：",
+      "客观硬性标准：",
+      "通过阈值：",
+      "优先级：",
+      "所属层级："
+    ],
+    "items": [
+      {
+        "index": 1,
+        "title": "1. 入口与交付结构",
+        "score": 12,
+        "missing_labels": [],
+        "priority": "Gate项",
+        "level": "L1"
+      },
+      {
+        "index": 2,
+        "title": "2. OpenAPI索引与输入完整性",
+        "score": 12,
+        "missing_labels": [],
+        "priority": "Gate项",
+        "level": "L3"
+      },
+      {
+        "index": 3,
+        "title": "3. 合同兼容差分",
+        "score": 18,
+        "missing_labels": [],
+        "priority": "高权重项",
+        "level": "L6"
+      },
+      {
+        "index": 4,
+        "title": "4. 弃用窗口与通知完整性",
+        "score": 14,
+        "missing_labels": [],
+        "priority": "高权重项",
+        "level": "L6"
+      },
+      {
+        "index": 5,
+        "title": "5. SDK客户端影响",
+        "score": 16,
+        "missing_labels": [],
+        "priority": "高权重项",
+        "level": "L5"
+      },
+      {
+        "index": 6,
+        "title": "6. 发布建议",
+        "score": 14,
+        "missing_labels": [],
+        "priority": "高权重项",
+        "level": "L9"
+      },
+      {
+        "index": 7,
+        "title": "7. 报告一致性与输入保护",
+        "score": 14,
+        "missing_labels": [],
+        "priority": "普通项",
+        "level": "L9"
+      }
+    ],
+    "gate_count": 2,
+    "gate_upper_bound": 2,
+    "valid": true
+  },
+  "answer_sheets": [
+    "交付物答案清单",
+    "固定字段答案",
+    "固定集合答案",
+    "固定数值答案",
+    "允许变体答案"
+  ],
+  "specification_sheets": [
+    "任务规格转化"
+  ],
+  "task_spec_column_count": 2,
+  "task_asset_id": "api_gateway_openapi_sdk_impact",
+  "forbidden_spec_labels": [],
+  "actual_business_inputs": [
+    "openapi/base.json",
+    "openapi/candidate.json",
+    "compat_policy.json",
+    "sdk_usage.csv"
+  ],
+  "declared_delivery_paths": [
+    "output/check_api_compat.mjs",
+    "output/reports/breaking_changes.csv",
+    "output/reports/deprecation_windows.csv",
+    "output/reports/sdk_impact_matrix.csv",
+    "output/reports/release_advisory.json",
+    "output/reports/report_consistency.json"
+  ],
+  "reference_paths": [
+    "output/check_api_compat.mjs",
+    "output/reports/breaking_changes.csv",
+    "output/reports/deprecation_windows.csv",
+    "output/reports/release_advisory.json",
+    "output/reports/report_consistency.json",
+    "output/reports/sdk_impact_matrix.csv"
+  ],
+  "undeclared_reference_paths": [],
+  "missing_delivery_paths": [],
+  "humanizer_score": 48,
+  "attachments_sha256": {
+    "输入数据包.zip": "f84bb18d8fd8a83fbf81a2c072ff79226987300a53b3546d72bb3e6447d80fcf",
+    "reference.zip": "dbed9f4913218d65d878ad38f67ebde72312a34cb6afd344492225d14fbd797c",
+    "关键标准答案.xlsx": "6194b7c6b83b86872d8a74bba8402e1d09fabc4a09093b6735290d33a2fae2b5",
+    "任务规格转化.xlsx": "5ecc9b91691e93a2334fd01e761abac64b9e9555913425d671e8c2fca13cdc8a"
+  },
+  "online_ai_detector_used_as_conclusion": false
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ale-q10543-windows-repro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "node verification/verify.mjs"
+  }
+}

@@ -1,0 +1,7 @@
+读取两份OpenAPI、兼容策略和SDK调用清单，确认发布日期、阻断类型、弃用天数与重点流量口径。
+用Node.js建立operationId索引，保留path、HTTPmethod、请求体和响应schema，拒绝缺失或重复的operationId。
+比较operation集合、请求必填字段与可选字段，并递归定位响应enum成员的增减。
+根据兼容策略分类变更，计算弃用窗口，记录被删除且通知不完整的operation。
+把变更和弃用结果按operationId关联到SDK客户端，生成影响等级与处理动作。
+汇总发布结论、高流量客户端、修复动作和安全变化，核对五份报告共享的业务主键与计数。
+将三份CSV和两份JSON完整写入output/reports，并保持输入文件不变。

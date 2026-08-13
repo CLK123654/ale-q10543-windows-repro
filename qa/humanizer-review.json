@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "skill": "humanizer-zh",
+  "result": "PASS",
+  "scores": {
+    "直接性": 10,
+    "节奏": 9,
+    "信任度": 10,
+    "真实性": 10,
+    "精炼度": 9,
+    "total": 48
+  },
+  "minimum_total": 45,
+  "reviewed_scopes": [
+    "任务名称",
+    "任务概要",
+    "任务prompt",
+    "关键动作",
+    "评分表",
+    "环境依赖",
+    "软件步骤",
+    "输入材料中的自然语言",
+    "Reference中的用户可见文字",
+    "关键标准答案工作簿全部自然语言",
+    "任务规格工作簿全部自然语言"
+  ],
+  "notes": [
+    "任务直接说明候选OpenAPI发布复核，没有宣传式背景、机械三段式或抽象价值判断",
+    "保留真实发布角色、API维护团队、SDK负责人和网关发布负责人的消费关系",
+    "删除固定样本统计、重复复跑、哈希、动态改参与内部校验控制量",
+    "评分按输入、差分、弃用、SDK关联、发布决策和跨报告一致性设置，没有暴露完整样本答案",
+    "规格表只保留两列业务规格，没有学科、难度、人员或流程字段"
+  ],
+  "reviewed_artifacts_sha256": {
+    "任务名称.txt": "a3028e04f87dd52316a2154e4fba38d3a3567e03ded8dd49d57b1cfa8a4f3868",
+    "任务概要.txt": "44ae98dab63ca691705aae1b535495e4e1f1f92b10a3bd7af03d02c1e9031e3a",
+    "任务prompt.txt": "4d1b559f77b40d8bad82e64dc73305d4c1f1fdf603e5fd0a5f6e05eec3180b97",
+    "关键动作.txt": "d5497ad1e9da1867ff86b24004ce4444635ea44cd5a2a93f8dd1d226439ac64d",
+    "评分表.txt": "5b7e46f273e64889b8d065b5303610ccd15dfdb692ba9a4a658c13fe7b34e310",
+    "环境依赖.txt": "eb7ca0143f2386f792181aac71721ce0f322bba62791416e88eb4143faebf5fb",
+    "相关专业软件的关键步骤.txt": "cd6d4698ca64e1522a356ac0233034813d66c5ba5b51e867e9713725d7a88c18",
+    "task_fields.json": "ba3a36a361f07bb27f5f92c213e34ef500e6f5e5c13a206afe22955b4557acf0",
+    "输入数据包.zip": "f84bb18d8fd8a83fbf81a2c072ff79226987300a53b3546d72bb3e6447d80fcf",
+    "reference.zip": "dbed9f4913218d65d878ad38f67ebde72312a34cb6afd344492225d14fbd797c",
+    "关键标准答案.xlsx": "6194b7c6b83b86872d8a74bba8402e1d09fabc4a09093b6735290d33a2fae2b5",
+    "任务规格转化.xlsx": "5ecc9b91691e93a2334fd01e761abac64b9e9555913425d671e8c2fca13cdc8a",
+    "ALE-专家数据作业表.csv": "f68e9311ec0a804f4d4990bba5a83de644b9ec3b84c44c8fe9d152d6504ae0d6"
+  },
+  "online_ai_detector_used_as_conclusion": false
+}

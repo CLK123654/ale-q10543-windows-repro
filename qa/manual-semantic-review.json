@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task_key": "Q10543",
+  "result": "PASS",
+  "review_method": "人工逐字段和逐附件语义核验，线上AI检测不作为结论",
+  "ai_trace_dimensions": {
+    "language_style": "PASS",
+    "task_reasonableness": "PASS",
+    "obvious_hallucination": "PASS",
+    "fabricated_or_vague_citation": "PASS",
+    "broken_reasoning_chain": "PASS",
+    "answer_leakage": "PASS"
+  },
+  "real_role_and_consumers": "平台工程师完成兼容分析；API维护团队修订合同，SDK负责人安排客户端升级，网关发布负责人消费发布建议",
+  "actual_inputs": [
+    "openapi/base.json中的当前生产合同",
+    "openapi/candidate.json中的候选发布合同",
+    "compat_policy.json中的兼容与弃用策略",
+    "sdk_usage.csv中的脱敏客户端调用清单"
+  ],
+  "continuous_actions": [
+    "读取两份合同、策略和SDK清单",
+    "建立唯一operationId索引",
+    "比较operation集合、请求字段和响应enum",
+    "按照策略分类兼容变化",
+    "计算UTC弃用窗口并识别通知缺失",
+    "按operationId关联SDK客户端",
+    "汇总发布建议并核对跨报告关系"
+  ],
+  "main_software_necessity": "Node.js实际完成JSON与CSV读取、schema递归比较、UTC日期计算、多源关联和结构化报告写出；人工文本对照不能替代可复用入口",
+  "hard_number_sources": "版本号来自候选OpenAPI，候选发布日期、最短弃用天数和高流量阈值来自compat_policy.json，日期、路径、operation和调用量来自两份OpenAPI与sdk_usage.csv，答案中的统计均由这些输入和规则计算",
+  "citation_review": "没有外部链接、行业报告、专家观点或未提供材料，所有判断均定位到候选可见文件与字段",
+  "closure": "Prompt声明脚本与五份报告，Reference包含同名交付；七个评分项覆盖完整业务链；五页答案与两列规格分别提供内部核验值和实现边界",
+  "online_ai_detector_used_as_conclusion": false
+}

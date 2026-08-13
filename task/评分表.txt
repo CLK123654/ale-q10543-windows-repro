@@ -1,0 +1,85 @@
+总分100分
+
+1. 入口与交付结构
+分值：12分
+标准答案或判定规则：从压缩包根目录执行node output/check_api_compat.mjs .后生成任务要求中的脚本和五份报告，入口正常结束，报告可读取。
+关键字段或路径：output/check_api_compat.mjs；output/reports/breaking_changes.csv；deprecation_windows.csv；sdk_impact_matrix.csv；release_advisory.json；report_consistency.json
+容差及来源：路径按任务要求核对；CSV允许必要转义及LF或CRLF行尾，JSON键序和缩进可以不同。
+未满足时：脚本或核心报告缺失、入口失败、报告不可读，或输出不是由当前输入生成。
+可观察证据及定位方式：规定路径、Node.js结束状态及五份报告结构。
+客观硬性标准：脚本和五份报告齐全，入口正常结束，报告均能解析。
+通过阈值：三项均满足。
+优先级：Gate项
+所属层级：L1任务指令遵循层
+
+2. OpenAPI索引与输入完整性
+分值：12分
+标准答案或判定规则：分别从当前和候选合同建立operationId唯一索引，索引保留path、HTTPmethod和operation对象；SDK清单按表头解析并保留客户端身份、版本、operationId、周调用量和负责人。
+关键字段或路径：openapi/base.json；openapi/candidate.json；sdk_usage.csv；output/check_api_compat.mjs中的索引和CSV解析逻辑
+容差及来源：operation顺序不计分；path和HTTPmethod与对应合同逐项一致，weekly_calls按整数处理。
+未满足时：只比较path、忽略HTTPmethod、重复operationId被覆盖、SDK列错位，或主要输入未使用。
+可观察证据及定位方式：两份OpenAPI、SDK清单、索引对象及三份业务报告中的operation_id。
+客观硬性标准：全部operationId唯一可追溯，索引字段完整，SDK记录无漏行或错列。
+通过阈值：三项均满足。
+优先级：Gate项
+所属层级：L3输入数据导入与完整性层
+
+3. 合同兼容差分
+分值：18分
+标准答案或判定规则：按operationId比较operation集合；对保留operation比较application/json请求体的required与properties，并递归比较各响应状态码schema中的enum。change_type、severity和policy_result依据compat_policy.json分类。
+关键字段或路径：output/reports/breaking_changes.csv中的change_id、operation_id、path、method、change_type、location、severity、policy_result
+容差及来源：变更集合按operation_id、change_type和location无序比较；change_id可采用其它稳定编号，描述文字允许等义表达。
+未满足时：漏掉删除或新增operation、必填字段变化、可选字段变化或enum成员移除，分类与策略不符，或位置无法追溯。
+可观察证据及定位方式：两份OpenAPI对应schema节点、compat_policy.json与breaking_changes.csv。
+客观硬性标准：所有合同变化均被识别，位置准确，兼容分类等于策略映射。
+通过阈值：全部变化满足三项标准。
+优先级：高权重项
+所属层级：L6领域计算与专业规则层
+
+4. 弃用窗口与通知完整性
+分值：14分
+标准答案或判定规则：候选合同中deprecated为true的operation使用x-deprecated-on与x-sunset-on计算UTC自然日差；被删除且缺少完整通知的operation使用candidate_release_date作为下线日，并记录通知缺失；结果与min_deprecation_days比较。
+关键字段或路径：output/reports/deprecation_windows.csv中的operation_id、deprecated_on、sunset_on、window_days、min_days、policy_result
+容差及来源：日期采用YYYY-MM-DD，UTC自然日差和min_deprecation_days均为整数且无容差；来源为候选OpenAPI和compat_policy.json。
+未满足时：日期按本地时区计算、删除operation未纳入、缺失通知仍通过，或窗口结论与策略阈值不符。
+可观察证据及定位方式：候选合同弃用扩展字段、候选发布日期、最短天数与窗口报告。
+客观硬性标准：所有应检查operation均有记录，天数可复算，通知和阈值结论正确。
+通过阈值：三项均满足。
+优先级：高权重项
+所属层级：L6领域计算与专业规则层
+
+5. SDK客户端影响
+分值：16分
+标准答案或判定规则：按operationId把SDK清单与兼容变化、弃用窗口和sdk_watch_operations关联。impact_level与required_action分别反映阻断变更、弃用违规、重点观察和兼容变化；客户端身份、版本、周调用量与负责人保持输入值。
+关键字段或路径：output/reports/sdk_impact_matrix.csv中的client_id、sdk_version、operation_id、weekly_calls、owner、impact_level、required_action
+容差及来源：按client_id无序比较；输入身份与数值无容差，处理动作允许等义文字但必须指向同一根因。
+未满足时：按SDK版本猜测影响、漏掉客户端、身份字段改变、影响等级与关联规则不符，或动作无法定位变更根因。
+可观察证据及定位方式：sdk_usage.csv、两份变化报告、compat_policy.json和客户端矩阵。
+客观硬性标准：全部客户端一一对应，影响等级可复算，处理动作覆盖对应根因。
+通过阈值：三项均满足。
+优先级：高权重项
+所属层级：L5多源关联与字段一致性层
+
+6. 发布建议
+分值：14分
+标准答案或判定规则：release_advisory.json根据阻断变化和弃用违规得出result，使用compat_policy.json的candidate_release_date对应版本，列出阻断数、弃用失败数、高流量阻断客户端、修复动作和兼容变化。
+关键字段或路径：release_advisory.json中的result、release_version、blocker_count、deprecation_policy_failures、high_traffic_clients、required_fixes、safe_changes
+容差及来源：计数为整数且无容差；高流量判断使用high_traffic_weekly_calls；数组顺序不计分，修复动作允许等义表达。
+未满足时：发布结论与阻断状态矛盾、计数不能从报告复算、高流量客户端不符合阈值、修复动作漏根因，或兼容变化与差分冲突。
+可观察证据及定位方式：三份CSV、兼容策略与release_advisory.json。
+客观硬性标准：结论、计数、客户端和动作均能从输入及报告复算。
+通过阈值：四类信息全部一致。
+优先级：高权重项
+所属层级：L9跨产物一致性与可追溯层
+
+7. 报告一致性与输入保护
+分值：14分
+标准答案或判定规则：report_consistency.json根据当前报告计算结构与计数关系，result只在全部关系成立时为PASS；三份CSV与发布建议共享的operation、客户端、阻断和弃用计数一致。处理过程不改写OpenAPI、策略、SDK清单或starter。
+关键字段或路径：report_consistency.json中的result、measures、relationships；三份CSV；release_advisory.json；输入文件
+容差及来源：measures使用整数，relationships使用布尔值；字段名称可按同义业务含义组织，但不得以文本代替布尔或数字。
+未满足时：一致性报告预填固定结论、统计与报告不符、跨报告计数冲突，或任一输入文件被改写。
+可观察证据及定位方式：report_consistency.json与四份业务报告的对应字段，以及输入文件内容。
+客观硬性标准：一致性报告由当前报告复算，全部跨报告关系成立，输入保持不变。
+通过阈值：三项均满足。
+优先级：普通项
+所属层级：L9跨产物一致性与可追溯层
