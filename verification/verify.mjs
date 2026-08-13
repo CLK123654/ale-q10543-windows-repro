@@ -25,6 +25,7 @@ const taskHashes={
 };
 const deliveryMembers=['output/check_api_compat.mjs','output/reports/breaking_changes.csv','output/reports/deprecation_windows.csv','output/reports/release_advisory.json','output/reports/report_consistency.json','output/reports/sdk_impact_matrix.csv'];
 const sha=body=>crypto.createHash('sha256').update(body).digest('hex'),shaFile=file=>sha(fs.readFileSync(file)),assert=(value,message)=>{if(!value)throw new Error(message);};
+const shaTextFile=file=>sha(Buffer.from(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n')));
 function parseZipBytes(data){const files=new Map();let offset=0;while(offset+46<=data.length){if(data.readUInt32LE(offset)!==0x02014b50){offset+=1;continue;}const method=data.readUInt16LE(offset+10),compressedSize=data.readUInt32LE(offset+20),uncompressedSize=data.readUInt32LE(offset+24),nameLength=data.readUInt16LE(offset+28),extraLength=data.readUInt16LE(offset+30),commentLength=data.readUInt16LE(offset+32),localOffset=data.readUInt32LE(offset+42),name=data.subarray(offset+46,offset+46+nameLength).toString('utf8').replaceAll('\\','/');if(!name.endsWith('/')){const localNameLength=data.readUInt16LE(localOffset+26),localExtraLength=data.readUInt16LE(localOffset+28),start=localOffset+30+localNameLength+localExtraLength,compressed=data.subarray(start,start+compressedSize),body=method===0?compressed:method===8?inflateRawSync(compressed):null;assert(body&&body.length===uncompressedSize,'ZIP extraction error');files.set(name,body);}offset+=46+nameLength+extraLength+commentLength;}return files;}
 const parseZip=file=>parseZipBytes(fs.readFileSync(file));
 async function extract(file,destination){for(const[name,bytes]of parseZip(file)){const target=path.resolve(destination,name);assert(target.startsWith(path.resolve(destination)+path.sep),'unsafe ZIP path');await fsp.mkdir(path.dirname(target),{recursive:true});await fsp.writeFile(target,bytes);}}
@@ -41,7 +42,7 @@ function reportDigest(root){return sha(Buffer.from(JSON.stringify(semanticReport
 await fsp.rm(evidenceRoot,{recursive:true,force:true});await fsp.mkdir(evidenceRoot,{recursive:true});
 assert(process.platform==='win32'&&process.env.GITHUB_ACTIONS==='true','Windows hosted runner required');
 for(const[name,expected]of Object.entries(attachments))assert(shaFile(path.join(artifactRoot,name))===expected,name+' checksum mismatch');
-for(const[name,expected]of Object.entries(taskHashes))assert(shaFile(path.join(repoRoot,'task',name))===expected,name+' task checksum mismatch');
+for(const[name,expected]of Object.entries(taskHashes))assert(shaTextFile(path.join(repoRoot,'task',name))===expected,name+' task checksum mismatch');
 const input=parseZip(path.join(artifactRoot,'输入数据包.zip')),reference=parseZip(path.join(artifactRoot,'reference.zip'));
 assert(JSON.stringify([...reference.keys()].sort())===JSON.stringify(deliveryMembers),'Reference member list mismatch');
 const platform=[...input,...reference].filter(([name,bytes])=>(bytes[0]===0x7f&&bytes.subarray(1,4).toString()==='ELF')||/\.(?:sh|bash|so)$/iu.test(name));assert(platform.length===0,'platform-specific member found');
