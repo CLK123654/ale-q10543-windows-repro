@@ -34,17 +34,17 @@
   "reviewed_artifacts_sha256": {
     "任务名称.txt": "a3028e04f87dd52316a2154e4fba38d3a3567e03ded8dd49d57b1cfa8a4f3868",
     "任务概要.txt": "44ae98dab63ca691705aae1b535495e4e1f1f92b10a3bd7af03d02c1e9031e3a",
-    "任务prompt.txt": "4d1b559f77b40d8bad82e64dc73305d4c1f1fdf603e5fd0a5f6e05eec3180b97",
+    "任务prompt.txt": "7410379528284d1d3e3e1ea495ba123e6e23e2b8fa9089e88f50c932b70b69ad",
     "关键动作.txt": "d5497ad1e9da1867ff86b24004ce4444635ea44cd5a2a93f8dd1d226439ac64d",
-    "评分表.txt": "5b7e46f273e64889b8d065b5303610ccd15dfdb692ba9a4a658c13fe7b34e310",
+    "评分表.txt": "8eb6c6aa521dc520dd29309afac3cf4a4867519c8c8de1e8d7e3c4a30fb22cad",
     "环境依赖.txt": "eb7ca0143f2386f792181aac71721ce0f322bba62791416e88eb4143faebf5fb",
-    "相关专业软件的关键步骤.txt": "cd6d4698ca64e1522a356ac0233034813d66c5ba5b51e867e9713725d7a88c18",
-    "task_fields.json": "ba3a36a361f07bb27f5f92c213e34ef500e6f5e5c13a206afe22955b4557acf0",
-    "输入数据包.zip": "f84bb18d8fd8a83fbf81a2c072ff79226987300a53b3546d72bb3e6447d80fcf",
-    "reference.zip": "dbed9f4913218d65d878ad38f67ebde72312a34cb6afd344492225d14fbd797c",
-    "关键标准答案.xlsx": "6194b7c6b83b86872d8a74bba8402e1d09fabc4a09093b6735290d33a2fae2b5",
-    "任务规格转化.xlsx": "5ecc9b91691e93a2334fd01e761abac64b9e9555913425d671e8c2fca13cdc8a",
-    "ALE-专家数据作业表.csv": "f68e9311ec0a804f4d4990bba5a83de644b9ec3b84c44c8fe9d152d6504ae0d6"
+    "相关专业软件的关键步骤.txt": "9363d416d7db8bf51b21bed2328cf8dec26e9f91baacbc45b23adaf0d63f8f9c",
+    "task_fields.json": "a5484c4e6aa0a3838c5aa4c36c90d73acc31e347ad530d5bc3e72084ed600eb4",
+    "输入数据包.zip": "1ddd4639e445921daca87ca317845d03f2acdd1c4ff5bd71618a0470fb7b629d",
+    "reference.zip": "dc50f11c3fe9518816ca591b5f93cdee37fb72a8818888eebe566e1c882bcc3f",
+    "关键标准答案.xlsx": "0d55794c7032850822118c128b6eed35b07beccbaf12d3a6e8dcf6ea3d14c3da",
+    "任务规格转化.xlsx": "141d1d6793b1e280e63cb2993596619d6768552b3b046e9ac5e278e4077fee4b",
+    "ALE-专家数据作业表.csv": "64682084fac02217a974e7304e4da70c06787fe904944d5b20a3cd7bb72caf78"
   },
   "online_ai_detector_used_as_conclusion": false
 }

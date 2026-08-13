@@ -3,5 +3,5 @@
 3.比较operation集合、请求字段及响应enum，按compat_policy.json分类兼容与阻断变化。
 4.依据candidate_release_date和最短天数计算弃用窗口，并处理删除operation的通知缺失情况。
 5.解析sdk_usage.csv，按operationId关联变更、弃用、重点观察配置和周调用量。
-6.生成兼容变化、弃用窗口和SDK影响三份CSV，再汇总release_advisory.json与report_consistency.json。
+6.生成兼容变化、弃用周期和SDK影响三份CSV，再汇总release_advisory.json与report_consistency.json。
 7.执行node output/check_api_compat.mjs .，核对报告业务主键、字段和计数，并确认输入文件保持不变。

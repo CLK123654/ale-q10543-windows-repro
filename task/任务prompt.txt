@@ -4,4 +4,4 @@ Commerce Gateway准备发布2026.08.0-rc1。openapi/base.json是当前生产合�
 
 弃用窗口按UTC自然日计算。候选合同中标记deprecated的operation读取x-deprecated-on和x-sunset-on；被删除且没有完整通知的operation使用candidate_release_date作为下线日，并记录通知缺失。SDK影响按operationId与sdk_usage.csv关联，综合阻断变更、弃用违规、重点观察operation和兼容变化得出影响等级及处理动作。达到high_traffic_weekly_calls的阻断客户端需要进入发布建议的高流量清单。
 
-在压缩包根目录执行node output/check_api_compat.mjs .。交付output/check_api_compat.mjs，以及output/reports中的breaking_changes.csv、deprecation_windows.csv、sdk_impact_matrix.csv、release_advisory.json和report_consistency.json。发布建议应说明版本结论、阻断原因、弃用问题、高流量客户端、修复动作和安全变化；report_consistency.json记录各报告之间的主键与计数关系。处理过程保持OpenAPI、策略、SDK清单和starter不变，全程离线。
+在压缩包根目录执行node output/check_api_compat.mjs .。交付output/check_api_compat.mjs，以及output/reports中的breaking_changes.csv、deprecation_periods.csv、sdk_impact_matrix.csv、release_advisory.json和report_consistency.json。发布建议应说明版本结论、阻断原因、弃用问题、高流量客户端、修复动作和安全变化；report_consistency.json记录各报告之间的主键与计数关系。处理过程保持OpenAPI、策略、SDK清单和starter不变，全程离线。

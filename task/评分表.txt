@@ -3,7 +3,7 @@
 1. 入口与交付结构
 分值：12分
 标准答案或判定规则：从压缩包根目录执行node output/check_api_compat.mjs .后生成任务要求中的脚本和五份报告，入口正常结束，报告可读取。
-关键字段或路径：output/check_api_compat.mjs；output/reports/breaking_changes.csv；deprecation_windows.csv；sdk_impact_matrix.csv；release_advisory.json；report_consistency.json
+关键字段或路径：output/check_api_compat.mjs；output/reports/breaking_changes.csv；deprecation_periods.csv；sdk_impact_matrix.csv；release_advisory.json；report_consistency.json
 容差及来源：路径按任务要求核对；CSV允许必要转义及LF或CRLF行尾，JSON键序和缩进可以不同。
 未满足时：脚本或核心报告缺失、入口失败、报告不可读，或输出不是由当前输入生成。
 可观察证据及定位方式：规定路径、Node.js结束状态及五份报告结构。
@@ -39,7 +39,7 @@
 4. 弃用窗口与通知完整性
 分值：14分
 标准答案或判定规则：候选合同中deprecated为true的operation使用x-deprecated-on与x-sunset-on计算UTC自然日差；被删除且缺少完整通知的operation使用candidate_release_date作为下线日，并记录通知缺失；结果与min_deprecation_days比较。
-关键字段或路径：output/reports/deprecation_windows.csv中的operation_id、deprecated_on、sunset_on、window_days、min_days、policy_result
+关键字段或路径：output/reports/deprecation_periods.csv中的operation_id、deprecated_on、sunset_on、window_days、min_days、policy_result
 容差及来源：日期采用YYYY-MM-DD，UTC自然日差和min_deprecation_days均为整数且无容差；来源为候选OpenAPI和compat_policy.json。
 未满足时：日期按本地时区计算、删除operation未纳入、缺失通知仍通过，或窗口结论与策略阈值不符。
 可观察证据及定位方式：候选合同弃用扩展字段、候选发布日期、最短天数与窗口报告。

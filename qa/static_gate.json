@@ -104,7 +104,7 @@
   "declared_delivery_paths": [
     "output/check_api_compat.mjs",
     "output/reports/breaking_changes.csv",
-    "output/reports/deprecation_windows.csv",
+    "output/reports/deprecation_periods.csv",
     "output/reports/sdk_impact_matrix.csv",
     "output/reports/release_advisory.json",
     "output/reports/report_consistency.json"
@@ -112,7 +112,7 @@
   "reference_paths": [
     "output/check_api_compat.mjs",
     "output/reports/breaking_changes.csv",
-    "output/reports/deprecation_windows.csv",
+    "output/reports/deprecation_periods.csv",
     "output/reports/release_advisory.json",
     "output/reports/report_consistency.json",
     "output/reports/sdk_impact_matrix.csv"
@@ -121,10 +121,10 @@
   "missing_delivery_paths": [],
   "humanizer_score": 48,
   "attachments_sha256": {
-    "输入数据包.zip": "f84bb18d8fd8a83fbf81a2c072ff79226987300a53b3546d72bb3e6447d80fcf",
-    "reference.zip": "dbed9f4913218d65d878ad38f67ebde72312a34cb6afd344492225d14fbd797c",
-    "关键标准答案.xlsx": "6194b7c6b83b86872d8a74bba8402e1d09fabc4a09093b6735290d33a2fae2b5",
-    "任务规格转化.xlsx": "5ecc9b91691e93a2334fd01e761abac64b9e9555913425d671e8c2fca13cdc8a"
+    "输入数据包.zip": "1ddd4639e445921daca87ca317845d03f2acdd1c4ff5bd71618a0470fb7b629d",
+    "reference.zip": "dc50f11c3fe9518816ca591b5f93cdee37fb72a8818888eebe566e1c882bcc3f",
+    "关键标准答案.xlsx": "0d55794c7032850822118c128b6eed35b07beccbaf12d3a6e8dcf6ea3d14c3da",
+    "任务规格转化.xlsx": "141d1d6793b1e280e63cb2993596619d6768552b3b046e9ac5e278e4077fee4b"
   },
   "online_ai_detector_used_as_conclusion": false
 }

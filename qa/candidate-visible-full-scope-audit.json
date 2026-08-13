@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "task_key": "Q10543",
+  "result": "PASS",
+  "scopes": [
+    "17个任务字段",
+    "输入ZIP全部文本成员",
+    "Reference ZIP全部文本成员",
+    "关键标准答案五页全部单元格",
+    "任务规格全部单元格",
+    "公开仓库README与NOTICE",
+    "公开仓库task镜像"
+  ],
+  "controlled_enum_exemption": [
+    "学科一级分类受控选项",
+    "学科二级分类受控选项",
+    "题目难度受控选项",
+    "操作类型受控选项",
+    "是否支持Windows受控字段"
+  ],
+  "violations": {
+    "mixed_boundary_spaces": [],
+    "natural_language_quotes": [],
+    "unreal_data_labels": [],
+    "internal_authoring_or_repair_terms": [],
+    "candidate_visible_windows_terms_outside_environment": [],
+    "answer_leakage": [],
+    "fabricated_or_vague_citations": [],
+    "broken_reasoning_links": []
+  },
+  "online_ai_detector_used_as_conclusion": false
+}
